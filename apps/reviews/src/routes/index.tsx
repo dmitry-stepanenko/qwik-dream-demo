@@ -1,8 +1,8 @@
 /* eslint-disable no-console */
 import { component$, Resource } from '@builder.io/qwik';
 import { RequestHandler, useEndpoint } from '@builder.io/qwik-city';
-import StarIcon from '~/components/icons/StarIcon';
-import { Review } from '~/types';
+import StarIcon from '../components/icons/StarIcon';
+import { Review } from '../types';
 import { remotes } from '../../../../libs/shared/remotes';
 import { forcedDelay } from '../../../../libs/shared/utils';
 
@@ -68,7 +68,7 @@ export default component$(() => {
 	);
 });
 
-export const onGet: RequestHandler<Review[]> = async ({}) => {
+export const onGet: RequestHandler<Review[]> = async () => {
 	const endPoint = 'https://mocki.io/v1/4456f845-b6a2-47c0-acf4-ba676fa15751';
 	await forcedDelay(remotes.reviews.secondsOfDelay);
 	const response = await fetch(endPoint);

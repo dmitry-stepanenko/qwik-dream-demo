@@ -1,6 +1,6 @@
 import { qwikCity } from '@builder.io/qwik-city/vite';
 import { qwikVite } from '@builder.io/qwik/optimizer';
-import { defineConfig } from 'vite';
+import { defineConfig, UserConfig } from 'vite';
 import tsconfigPaths from 'vite-tsconfig-paths';
 import { type RemoteData } from './remotes';
 
@@ -15,5 +15,5 @@ export const customDefineConfig = ({ name }: RemoteData) =>
 				qwikVite(),
 				tsconfigPaths(),
 			],
-		};
+		} as UserConfig;
 	});

@@ -1,12 +1,12 @@
 import { $, component$, useClientEffect$, useOnDocument, useStore } from "@builder.io/qwik";
-import { ProductType } from "~/types";
+import { ProductType } from "../../types";
 import Breadcrumbs from "../breadcrumbs/Breadcrumbs";
 import CheckIcon from "../icons/CheckIcon";
 import HeartIcon from "../icons/HeartIcon";
 import Price from "../price/Price";
 import StockLevelLabel from "../stock-level-label/StockLevelLabel";
 import { graphQlQuery } from "../../../../../libs/shared/graphql-client";
-import { ADD_ITEM_TO_ORDER } from "~/components/product/Product.graphql";
+import { ADD_ITEM_TO_ORDER } from "../../components/product/Product.graphql";
 import { cartQuantitiesChangedEventId, orderChangeEventId } from "../../../../../libs/shared/custom-events";
 
 export default component$(({ product }: { product: ProductType }) => {

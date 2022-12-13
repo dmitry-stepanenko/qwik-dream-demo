@@ -1,5 +1,5 @@
 import { $, component$, useRef, useStore, useWatch$ } from '@builder.io/qwik';
-import { HeroSlide } from '~/routes';
+import { HeroSlide } from '../../routes';
 
 export default component$<{ slides: HeroSlide[] }>(({ slides }) => {
 	const carouselRef = useRef();

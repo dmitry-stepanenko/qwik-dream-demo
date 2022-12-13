@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import { component$, Resource } from '@builder.io/qwik';
 import { RequestHandler, useEndpoint } from '@builder.io/qwik-city';
-import Hero from '~/components/hero/Hero';
+import Hero from '../components/hero/Hero';
 import { remotes } from '../../../../libs/shared/remotes';
 import { forcedDelay } from '../../../../libs/shared/utils';
 
@@ -28,7 +28,7 @@ export default component$(() => {
 	);
 });
 
-export const onGet: RequestHandler<HeroSlide[]> = async ({}) => {
+export const onGet: RequestHandler<HeroSlide[]> = async () => {
 	const endPoint = 'https://mocki.io/v1/d69531ee-0548-4a9d-a554-7fa0df3c237d';
 	await forcedDelay(remotes.hero.secondsOfDelay);
 	const response = await fetch(endPoint);

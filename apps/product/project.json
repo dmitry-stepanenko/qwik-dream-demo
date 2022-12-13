@@ -1,4 +1,77 @@
 {
-	"$schema": "../../node_modules/nx/schemas/project-schema.json",
-	"name": "product"
+  "name": "product",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/product/src",
+  "targets": {
+    "build": {
+      "options": {
+        "outputPath": "dist/apps/product",
+        "configFile": "apps/product/vite.config.ts"
+      },
+      "executor": "@nrwl/vite:build"
+    },
+    "build.preview": {
+      "options": {
+        "outputPath": "dist/apps/product",
+        "configFile": "apps/product/vite.preview.config.ts"
+      },
+      "executor": "@nrwl/vite:build",
+      "dependsOn": ["build"]
+    },
+    "build.cloudflare-pages": {
+      "options": {
+        "outputPath": "dist/apps/product",
+        "configFile": "apps/product/vite.cloudflare-pages.config.ts"
+      },
+      "executor": "@nrwl/vite:build",
+      "dependsOn": ["build"]
+    },
+    "preview": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "vite preview --port 5004",
+        "cwd": "apps/product"
+      },
+      "dependsOn": ["build.preview"]
+    },
+    "serve": {
+      "executor": "@nrwl/vite:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "product:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "product:build:development",
+          "hmr": true
+        },
+        "production": {
+          "buildTarget": "product:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "test": {
+      "executor": "@nrwl/vite:test",
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
+      "options": {
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": [
+        "{options.outputFile}"
+      ],
+      "options": {
+        "lintFilePatterns": [
+          "apps/product/**/*.{ts,tsx,js,jsx}"
+        ]
+      }
+    }
+  },
+  "tags": []
 }

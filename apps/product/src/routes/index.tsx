@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import { component$, Resource } from "@builder.io/qwik";
 import { RequestHandler, useEndpoint } from "@builder.io/qwik-city";
-import { ProductType } from "~/types";
+import { ProductType } from "../types";
 import { remotes } from "../../../../libs/shared/remotes";
 import { forcedDelay } from "../../../../libs/shared/utils";
 import Product from "../components/product/Product";

@@ -1,15 +1,15 @@
 import { $, component$, useClientEffect$, useOnDocument, useStore } from "@builder.io/qwik";
-import CartContents from "~/components/cart-contents/CartContents";
-import CartPrice from "~/components/cart-totals/CartPrice";
-import CloseIcon from "~/components/icons/CloseIcon";
-import ShoppingBagIcon from "~/components/icons/ShoppingBagIcon";
+import CartContents from "../components/cart-contents/CartContents";
+import CartPrice from "../components/cart-totals/CartPrice";
+import CloseIcon from "../components/icons/CloseIcon";
+import ShoppingBagIcon from "../components/icons/ShoppingBagIcon";
 import {
 	cartQuantitiesChangedEventId,
 	orderChangeEventId,
 	sessionTokenReceivedEventId
 } from "../../../../libs/shared/custom-events";
 import { graphQlQuery, setSessionToken } from "../../../../libs/shared/graphql-client";
-import { ACTIVE_ORDER } from "~/routes/cart.graphql";
+import { ACTIVE_ORDER } from "../routes/cart.graphql";
 
 export function updateActiveOrder(state: { cart: any }) {
 	return graphQlQuery(ACTIVE_ORDER)
@@ -86,7 +86,7 @@ export default component$(() => {
 											</div>
 										</div>
 										<div className="mt-8">
-											{!!state.cart?.totalQuantity ? (
+											{state.cart?.totalQuantity ? (
 												<CartContents cart={state.cart} />
 											) : (
 												<div className="flex items-center justify-center h-48 text-xl text-gray-400">
